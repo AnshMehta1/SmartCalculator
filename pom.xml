@@ -3,9 +3,9 @@
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
 
-  <groupId>com.ansh</groupId>
-  <artifactId>SmartCalculator</artifactId>
-  <version>1.0-SNAPSHOT</version>
+ <groupId>com.savoira</groupId>
+ <artifactId>SmartCalculator</artifactId>
+ <version>1.0.0</version>
 
   <name>smartcalculator</name>
   <!-- FIXME change it to the project's website -->
@@ -38,6 +38,19 @@
     <dependency>
       <groupId>org.junit.jupiter</groupId>
       <artifactId>junit-jupiter-params</artifactId>
+      <scope>test</scope>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>2.11.0</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.junit.jupiter</groupId>
+      <artifactId>junit-jupiter</artifactId>
+      <version>5.11.0</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
