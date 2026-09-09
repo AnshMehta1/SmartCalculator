@@ -2,6 +2,8 @@ package com.savoira;
 
 import com.savoira.exceptions.DivisionByZeroException;
 import com.savoira.exceptions.InvalidOperationException;
+import com.savoira.exceptions.ModuloByZeroException;
+import com.savoira.exceptions.NegativeSquareRootException;
 import com.savoira.operations.Addition;
 import com.savoira.operations.Division;
 import com.savoira.operations.Modulo;
@@ -56,7 +58,7 @@ public class Main {
                 double result = operation.calculate();
                 System.out.printf("Result: %.2f%n",result);
 
-            } catch (InvalidOperationException | DivisionByZeroException e) {
+            } catch (InvalidOperationException | DivisionByZeroException | ModuloByZeroException | NegativeSquareRootException e) {
                 System.out.println("Error: " + e.getMessage());
             } catch (NumberFormatException e) {
                 System.out.println("Error: Please enter valid numbers."
