@@ -2,7 +2,7 @@ package com.savoira.operations;
 
 import com.savoira.Calculable;
 import com.savoira.Operation;
-
+import com.savoira.exceptions.ModuloByZeroException;
 
 /**
  * Represents a modulo operation.
@@ -26,6 +26,13 @@ public class Modulo extends Operation implements Calculable {
      */
     @Override
     public double calculate() {
+
+        if (getSecondNumber() == 0) {
+            throw new ModuloByZeroException(
+                    "Cannot calculate modulo by zero"
+            );
+        }
+
         return getFirstNumber() % getSecondNumber();
     }
 

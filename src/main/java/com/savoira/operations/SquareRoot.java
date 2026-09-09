@@ -2,7 +2,7 @@ package com.savoira.operations;
 
 import com.savoira.Calculable;
 import com.savoira.Operation;
-
+import com.savoira.exceptions.NegativeSquareRootException;
 
 /**
  * Represents a square root operation.
@@ -25,6 +25,13 @@ public class SquareRoot extends Operation implements Calculable {
      */
     @Override
     public double calculate() {
+
+        if (getFirstNumber() < 0) {
+            throw new NegativeSquareRootException(
+                    "Cannot calculate square root of a negative number"
+            );
+        }
+
         return Math.sqrt(getFirstNumber());
     }
 
