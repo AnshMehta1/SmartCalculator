@@ -2,8 +2,16 @@ package com.savoira;
 
 import java.util.Scanner;
 
+/**
+ * Entry point for the SmartCalculator command-line application.
+ */
 public class Main {
 
+    /**
+     * Starts the SmartCalculator application.
+     *
+     * @param args command-line arguments
+     */
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         Calculator calculator = new Calculator();
