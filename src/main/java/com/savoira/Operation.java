@@ -1,24 +1,22 @@
 package com.savoira;
 
 /**
- * Represents a calculator operation containing two operands and an operator.
+ * Abstract base class for calculator operations.
+ * Stores the two operands used by concrete calculator operations.
  */
-public class Operation {
+public abstract class Operation {
 
     private final double firstNumber;
-    private final String operator;
     private final double secondNumber;
 
     /**
-     * Creates an operation with two operands and an operator.
+     * Creates an operation with two operands.
      *
      * @param firstNumber the first operand
-     * @param operator the arithmetic operator
      * @param secondNumber the second operand
      */
-    public Operation(double firstNumber, String operator, double secondNumber) {
+    protected Operation(double firstNumber, double secondNumber) {
         this.firstNumber = firstNumber;
-        this.operator = operator;
         this.secondNumber = secondNumber;
     }
 
@@ -32,15 +30,6 @@ public class Operation {
     }
 
     /**
-     * Gets the operator.
-     *
-     * @return the arithmetic operator
-     */
-    public String getOperator() {
-        return operator;
-    }
-
-    /**
      * Gets the second operand.
      *
      * @return the second operand
@@ -48,4 +37,11 @@ public class Operation {
     public double getSecondNumber() {
         return secondNumber;
     }
+
+    /**
+     * Performs the operation.
+     *
+     * @return the calculated result
+     */
+    public abstract double calculate();
 }
