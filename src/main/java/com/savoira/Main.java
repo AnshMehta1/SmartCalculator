@@ -30,13 +30,23 @@ public class Main {
 
             double firstNumber = Double.parseDouble(input);
 
-            System.out.print("Enter operator (+ - * / %): ");
+            System.out.print("Enter operator (+ - * / % sqrt): ");
             String operator = scanner.nextLine().trim();
 
-            System.out.print("Enter second number: ");
-            double secondNumber = Double.parseDouble(scanner.nextLine().trim());
+            Calculable operation;
 
-            Calculable operation = createOperation(firstNumber, operator, secondNumber);
+            if (operator.equalsIgnoreCase("sqrt")) {
+                operation = new SquareRoot(firstNumber);
+            } else {
+                System.out.print("Enter second number: ");
+                double secondNumber = Double.parseDouble(scanner.nextLine().trim());
+                operation = createOperation(firstNumber, operator, secondNumber);
+            }
+
+            if (operation == null) {
+                continue;
+            }
+
             double result = operation.calculate();
 
             if (!Double.isNaN(result)) {
@@ -50,12 +60,12 @@ public class Main {
     }
 
     /**
-     * Creates the appropriate calculator operation.
+     * Creates an operation based on the supplied operator.
      *
      * @param firstNumber the first operand
      * @param operator the arithmetic operator
      * @param secondNumber the second operand
-     * @return the appropriate calculable operation
+     * @return the appropriate calculator operation, or null for an invalid operator
      */
     private static Calculable createOperation(double firstNumber, String operator, double secondNumber) {
 
@@ -64,27 +74,10 @@ public class Main {
             case "-" -> new Subtraction(firstNumber, secondNumber);
             case "*" -> new Multiplication(firstNumber, secondNumber);
             case "/" -> new Division(firstNumber, secondNumber);
-            case "%" -> new Calculable() {
-                @Override
-                public double calculate() {
-                    return firstNumber % secondNumber;
-                }
-
-                @Override
-                public String toString() {
-                    return "Modulus: " + firstNumber
-                            + " % " + secondNumber
-                            + " = " + calculate();
-                }
-            };
+            case "%" -> new Modulo(firstNumber, secondNumber);
             default -> {
                 System.out.println("Unknown operator");
-                yield new Calculable() {
-                    @Override
-                    public double calculate() {
-                        return Double.NaN;
-                    }
-                };
+                yield null;
             }
         };
     }
@@ -100,7 +93,10 @@ public class Main {
                 new Addition(10, 4),
                 new Subtraction(10, 4),
                 new Multiplication(10, 4),
-                new Division(10, 4)
+                new Division(10, 4),
+                new Modulo(10, 4),
+                new Percentage(200, 10),
+                new SquareRoot(25)
         );
 
         for (Calculable operation : operations) {
