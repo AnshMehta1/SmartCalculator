@@ -1,5 +1,7 @@
 package com.savoira;
 
+import com.savoira.exceptions.DivisionByZeroException;
+import com.savoira.exceptions.InvalidOperationException;
 import com.savoira.operations.Addition;
 import com.savoira.operations.Division;
 import com.savoira.operations.Modulo;
@@ -27,37 +29,38 @@ public class Main {
         System.out.println("Type 'exit' to quit.");
 
         while (true) {
-            System.out.print("Enter first number (or 'exit'): ");
 
-            String input = scanner.nextLine().trim();
+            try {
 
-            if (input.equalsIgnoreCase("exit")) {
-                break;
-            }
+                System.out.print("Enter first number (or 'exit'): ");
+                String input = scanner.nextLine().trim();
 
-            double firstNumber = Double.parseDouble(input);
+                if (input.equalsIgnoreCase("exit")) {
+                    break;
+                }
 
-            System.out.print("Enter operator (+ - * / % sqrt): ");
-            String operator = scanner.nextLine().trim();
+                double firstNumber = Double.parseDouble(input);
+                System.out.print("Enter operator " + "(+ - * / % sqrt percentage): ");
 
-            Calculable operation;
+                String operator = scanner.nextLine().trim();
+                Calculable operation;
 
-            if (operator.equalsIgnoreCase("sqrt")) {
-                operation = new SquareRoot(firstNumber);
-            } else {
-                System.out.print("Enter second number: ");
-                double secondNumber = Double.parseDouble(scanner.nextLine().trim());
-                operation = createOperation(firstNumber, operator, secondNumber);
-            }
+                if (operator.equalsIgnoreCase("sqrt")) {
+                    operation = new SquareRoot(firstNumber);
+                } else {
+                    System.out.print("Enter second number: ");
+                    double secondNumber = Double.parseDouble(scanner.nextLine().trim());
+                    operation = createOperation(firstNumber, operator, secondNumber);
+                }
 
-            if (operation == null) {
-                continue;
-            }
+                double result = operation.calculate();
+                System.out.printf("Result: %.2f%n",result);
 
-            double result = operation.calculate();
-
-            if (!Double.isNaN(result)) {
-                System.out.printf("Result: %.2f%n", result);
+            } catch (InvalidOperationException | DivisionByZeroException e) {
+                System.out.println("Error: " + e.getMessage());
+            } catch (NumberFormatException e) {
+                System.out.println("Error: Please enter valid numbers."
+                );
             }
         }
 
@@ -67,30 +70,28 @@ public class Main {
     }
 
     /**
-     * Creates an operation based on the supplied operator.
+     * Creates an operation based on the operator.
      *
-     * @param firstNumber the first operand
-     * @param operator the arithmetic operator
-     * @param secondNumber the second operand
-     * @return the appropriate calculator operation, or null for an invalid operator
+     * @param firstNumber first operand
+     * @param operator operator entered by the user
+     * @param secondNumber second operand
+     * @return corresponding calculator operation
      */
     private static Calculable createOperation(double firstNumber, String operator, double secondNumber) {
 
-        return switch (operator) {
+        return switch (operator.toLowerCase()) {
             case "+" -> new Addition(firstNumber, secondNumber);
             case "-" -> new Subtraction(firstNumber, secondNumber);
             case "*" -> new Multiplication(firstNumber, secondNumber);
             case "/" -> new Division(firstNumber, secondNumber);
             case "%" -> new Modulo(firstNumber, secondNumber);
-            default -> {
-                System.out.println("Unknown operator");
-                yield null;
-            }
+            case "percentage" -> new Percentage(firstNumber, secondNumber);
+            default -> throw new InvalidOperationException("Unknown operator: " + operator);
         };
     }
 
     /**
-     * Demonstrates runtime polymorphism using different operation types.
+     * Demonstrates runtime polymorphism.
      */
     private static void runPolymorphismDemo() {
         System.out.println();
