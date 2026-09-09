@@ -1,8 +1,15 @@
 package com.savoira;
 
+import com.savoira.operations.Addition;
+import com.savoira.operations.Division;
+import com.savoira.operations.Modulo;
+import com.savoira.operations.Multiplication;
+import com.savoira.operations.Percentage;
+import com.savoira.operations.SquareRoot;
+import com.savoira.operations.Subtraction;
+
 import java.util.List;
 import java.util.Scanner;
-
 /**
  * Entry point for the SmartCalculator command-line application.
  */
