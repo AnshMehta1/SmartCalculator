@@ -1,0 +1,30 @@
+.calculator {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 320px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.operator {
+    background-color: orange;
+}
+
+.equals {
+    background-color: teal;
+}
+
+.zero {
+    grid-column: span 2;
+}
+
+@media (max-width: 375px) {
+    .calculator {
+        width: 100%;
+    }
+}
