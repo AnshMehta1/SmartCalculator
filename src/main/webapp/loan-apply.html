@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Meridian Retail Bank - Loan Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+    <h1>Meridian Retail Bank</h1>
+    <p>Loan Application</p>
+</header>
+
+<nav>
+    <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="index.html#accounts">Accounts</a></li>
+        <li><a href="index.html#transfers">Transfers</a></li>
+        <li><a href="loan-apply.html">Loans</a></li>
+        <li><a href="index.html#settings">Settings</a></li>
+    </ul>
+</nav>
+
+<main>
+
+    <section>
+        <h2>Loan Application Form</h2>
+
+        <form>
+
+            <label for="full-name">Full Name</label>
+            <input
+                type="text"
+                id="full-name"
+                name="fullName"
+                minlength="3"
+                required
+            >
+
+            <label for="email">Email</label>
+            <input
+                type="email"
+                id="email"
+                name="email"
+                required
+            >
+
+            <label for="phone">Phone</label>
+            <input
+                type="tel"
+                id="phone"
+                name="phone"
+                pattern="[0-9]{10}"
+                title="10-digit mobile number"
+            >
+
+            <label for="loan-type">Loan Type</label>
+            <select
+                id="loan-type"
+                name="loanType"
+                required
+            >
+                <option value="">Select a loan type</option>
+                <option value="home">Home Loan</option>
+                <option value="personal">Personal Loan</option>
+                <option value="education">Education Loan</option>
+            </select>
+
+            <label for="loan-amount">Loan Amount</label>
+            <input
+                type="number"
+                id="loan-amount"
+                name="loanAmount"
+                min="50000"
+                max="5000000"
+                step="1000"
+                required
+            >
+
+            <label for="annual-income">Annual Income</label>
+            <input
+                type="number"
+                id="annual-income"
+                name="annualIncome"
+                min="100000"
+                required
+            >
+
+            <label for="declaration">
+                <input
+                    type="checkbox"
+                    id="declaration"
+                    name="declaration"
+                    required
+                >
+                I confirm the information provided is accurate
+            </label>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </section>
+
+</main>
+
+<footer>
+    <p>© 2025 Meridian Retail Bank | Savoira Learning Platform</p>
+    <a href="privacy-policy.html">Privacy Policy</a>
+</footer>
+
+</body>
+</html>
