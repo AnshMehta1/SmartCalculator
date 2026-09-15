@@ -1,0 +1,3 @@
+# Responsive Reflection
+
+The browser version of the calculator uses HTML to structure the page and CSS to control its layout, styling, and responsiveness. The terminal version runs the Java program through the JVM and uses `Scanner` to accept user input directly from the command line. The browser version does not contain the Java withdrawal logic, balance calculations, custom exceptions, or the three-attempt card-locking mechanism. These computational and error-handling features are available in the Java CLI version but are missing from the HTML/CSS browser version.

@@ -1,0 +1,118 @@
+
+nav {
+    display: flex;
+    background: #1F3864;
+}
+
+nav ul {
+    display: flex;
+    flex-direction: row;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 1rem;
+    display: block;
+}
+
+nav a:hover {
+    color: #0F7C7C;
+}
+
+
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.account-card {
+    padding: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+    border-left: 5px solid #0F7C7C;
+}
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th {
+    background: #1F3864;
+    color: white;
+    font-weight: bold;
+}
+
+tbody tr:nth-child(odd) {
+    background: white;
+}
+
+tbody tr:nth-child(even) {
+    background: #EAF1FB;
+}
+
+
+form input,
+form select {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+}
+
+form input:focus,
+form select:focus {
+    outline: 2px solid #0F7C7C;
+}
+
+button {
+    background: #1F3864;
+    color: white;
+}
+
+button:hover {
+    background: #0F7C7C;
+}
+
+
+@media (min-width: 901px) {
+    .dashboard-layout {
+        display: flex;
+    }
+
+    .dashboard-layout main {
+        width: 70%;
+    }
+
+    .dashboard-layout aside {
+        width: 30%;
+    }
+}
+
+
+@media (min-width: 600px) and (max-width: 900px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media (max-width: 599px) {
+    .dashboard-layout {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .card-grid {
+        grid-template-columns: 1fr;
+    }
+
+    nav ul {
+        flex-direction: column;
+    }
+}
